@@ -13,15 +13,18 @@ var stukkenRouter = require('./routes/stukken');
 var compression = require('compression');
 
 var bodyParser = require('body-parser');
+var helmet = require('helmet');
 
 var app = express();
+app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
 
 // Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb+srv://dbAdmin:dbAdmin933@clusterlocallibrary.7auzv.mongodb.net/WebsiteInternetapplicaties?retryWrites=true&w=majority';
+var dev_db_url = 'mongodb+srv://dbAdmin:dbAdmin933@clusterlocallibrary.7auzv.mongodb.net/WebsiteInternetapplicaties?retryWrites=true&w=majority';
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
