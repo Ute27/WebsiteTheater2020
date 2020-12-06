@@ -12,7 +12,7 @@ block content
         each persoon in personen_lijst
           div(class="w3-third")
             h3(class='ut-h3') #{persoon.naam}
-            img(src=persoon.foto onerror="this.src='../images/paris.png'" class="w3-round" alt=persoon.naam style="width:60%")
+            img(src=persoon.foto onerror="this.src='../public/images/paris.png'" class="w3-round" alt=persoon.naam style="width:60%")
             if (persoon.geboortedatum) 
               p #{persoon.geboortedatumFormat}
             else 
