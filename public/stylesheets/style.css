@@ -1,0 +1,33 @@
+.ut-foto {
+  max-width: 60%; }
+
+.ut-beschrijving {
+  max-height: 200px;
+  overflow: hidden;
+  margin-bottom: 0; }
+
+.ut-punt {
+  margin-bottom: 15px; }
+
+.ut-punt::after {
+  content: '...'; }
+
+.ut-form {
+  max-width: 600px; }
+
+.ut-contactinfo {
+  margin-top: 0; }
+
+.ut-center {
+  margin: 0 auto; }
+
+.ut-captcha {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; }
+
+.ut-h3 {
+  font-size: 20px;
+  font-weight: 500; }
+
+/*# sourceMappingURL=style.css.map */

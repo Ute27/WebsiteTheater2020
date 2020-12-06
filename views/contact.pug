@@ -1,0 +1,31 @@
+extends layout
+
+block extraImports
+  script(src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet')
+
+block content
+
+  div(class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact")
+    h2(class="w3-wide w3-center") CONTACT
+    p(class="w3-opacity w3-center").
+      Heb je een vraag of opmerking? 
+      Contacteer ons zeker!
+
+    div(class="w3-center m6 w3-large w3-margin-bottom")
+      div
+        i(class="fa fa-map-marker" style="width:30px") 
+        p(class='ut-contactinfo') Polderbos 20, De Pinte
+
+      div
+        i(class="fa fa-phone" style="width:30px") 
+        p(class='ut-contactinfo') 0475 42 09 68
+
+      div
+        i(class="fa fa-envelope" style="width:30px") 
+        p(class='ut-contactinfo') teater2000@gmail.com
+    
+    div(id='map' style='width: 100%; min-height: 60vh' class='w3-center ut-center w3-content')
+ 
+
+

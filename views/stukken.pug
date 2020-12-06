@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+  div(class="w3-black" id="tour")
+    div(class="w3-container w3-content w3-padding-64" style="max-width:800px")
+      h2(class="w3-wide w3-center") TONEELSTUKKEN
+      p(class="w3-opacity w3-center w3-padding-32") Wees op tijd bij het bestellen van uw tickets!
+
+      div(class="w3-row-padding w3-padding-32" style="margin:0 -16px")
+        each stuk in stukken_lijst
+          div(class="w3-third w3-margin-bottom")
+            img(src=stuk.foto_url onerror="this.src='../images/paris.jpg'" alt=stuk.naam style="width:100%")
+            div(class="w3-container w3-white")
+              p #{stuk.naam}
+              p(class="w3-opacity") #{stuk.datumrange}
+              div(class='ut-punt')
+                p(class='ut-beschrijving') !{stuk.korte_inhoud}
+              button(class="w3-button w3-black w3-margin-bottom" onclick=stuk.url_onclick) Meer info
+        else
+          div(class="w3-third w3-margin-bottom")
+            img(src="/images/paris.jpg" alt="Paris" style="width:100%")
+            div(class="w3-container w3-white")
+              p(class="w3-opacity") Sorry
+              p Er zijn momenteel geen toneelstukken in de maak.

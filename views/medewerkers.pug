@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+  div(class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band")
+      h2(class="w3-wide") ONZE TROUWE MEDEWERKERS
+      p(class="w3-opacity") Met theater als passie
+      p(class="w3-justify").
+        Hier staat een opsomming van alle medewerkers die gedurende de jaren als vrijwilliger geholpen hebben bij onze vereniging. 
+      div(class="w3-row w3-padding-32")
+
+        each persoon in personen_lijst
+          div(class="w3-third")
+            h3(class='ut-h3') #{persoon.naam}
+            img(src=persoon.foto onerror="this.src='../images/paris.jpg'" class="w3-round" alt=persoon.naam style="width:60%")
+            if (persoon.geboortedatum) 
+              p #{persoon.geboortedatumFormat}
+            else 
+              p(class='w3-opacity') Geen geboortedatum
+
+            if (persoon.gsm_nummer) 
+              p #{persoon.gsm_nummer}
+            else 
+              p(class='w3-opacity') Geen GSM-nummer
+
+            if (persoon.email_adres) 
+              p #{persoon.email_adres}
+            else 
+              p(class='w3-opacity') Geen Email-adres

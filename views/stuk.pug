@@ -1,0 +1,79 @@
+extends layout
+
+block extraImports
+  script(src="https://www.google.com/recaptcha/api.js" async defer)
+
+
+block content
+
+  div(class="w3-container w3-content w3-padding-64" style="max-width:800px")
+    h2(class="w3-wide w3-center")  #{info.naam}
+    p(class="w3-opacity w3-center w3-padding-32") #{info.alledata}
+
+    div(class="w3-center")
+      img(class='ut-foto' src=info.foto_url onerror="this.src='../images/paris.jpg'")
+      p !{info.korte_inhoud}
+
+      h3 Acteurs
+      each persoon in info.medewerkers
+        p #{persoon.naam}
+      
+      if (!info.alvoorbij)
+
+        button(class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'") Buy Tickets
+        
+        div(id="ticketModal" class="w3-modal")
+          div(class="w3-modal-content w3-animate-top w3-card-4 ut-form")
+            header(class="w3-container w3-teal w3-center w3-padding-32")
+              span(onclick="document.getElementById('ticketModal').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright") ×
+              h2(class="w3-wide")
+                |
+                i(class="fa fa-suitcase w3-margin-right") Tickets
+                  | 
+                  br
+                  | #{err}
+                  
+
+            div(class="w3-container")
+              form(method='POST' id='ut-ticketform')
+                div(class="g-recaptcha ut-captcha" data-sitekey="6LemhPoZAAAAAOzDVSBSthLpT0AIC66sMk858FcT")
+                p
+                  |
+                  label
+                    |
+                    i(class="fa fa-shopping-cart") Tickets, €#{info.prijs_tickets} per persoon
+                input(class="w3-input w3-border" type="text" placeholder="How many?" name='aantal' value=(undefined===input ? '' : input.aantal))
+                input(class="w3-input w3-border" type="date" name='datum' value=(undefined===input ? '' : input.datum))
+                p
+                  |
+                  label
+                    |
+                    i(class="fa fa-user") Send To
+                input(class="w3-input w3-border" type="text" placeholder="Naam" name='naam' value=(undefined===input ? '' : input.naam))
+                input(class="w3-input w3-border" type="email" placeholder="Enter email" name='email' value=(undefined===input ? '' : input.email))
+                input(class="w3-input w3-border" type="text" placeholder="Enter gsm" name='gsm' value=(undefined===input ? '' : input.gsm))
+                
+                button(class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right") PAY 
+                  |
+                  i(class="fa fa-check")
+                  
+                
+                button(class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'") Close 
+                  |
+                  i(class="fa fa-remove")
+
+        if (correct === true)
+          div(id="ticketSucces" class="w3-modal" style='display: none;')
+            div(class="w3-modal-content w3-animate-top w3-card-4 ut-form")
+              header(class="w3-container w3-teal w3-center w3-padding-32")
+                span(onclick="document.getElementById('ticketSucces').style.display='none'" class="w3-button w3-teal w3-xlarge w3-display-topright") ×
+                h2(class="w3-wide")
+                  |
+                  i(class="fa fa-suitcase w3-margin-right") Tickets zijn besteld!
+
+          script document.getElementById('ticketSucces').style.display='block';
+        
+        else if (correct === false)
+          script document.getElementById('ticketModal').style.display='block'
+
+          
