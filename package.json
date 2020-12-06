@@ -8,7 +8,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "serverstart": "DEBUG=express-nieuwemap:* npm run devstart"
+    "serverstart": "DEBUG=express-nieuwemap:* npm run devstart",
+    "buildProd": "rm -rf dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js"
   },
   "dependencies": {
     "async": "^3.2.0",
