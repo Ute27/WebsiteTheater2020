@@ -13,10 +13,8 @@ var stukkenRouter = require('./routes/stukken');
 var compression = require('compression');
 
 var bodyParser = require('body-parser');
-var helmet = require('helmet');
 
 var app = express();
-app.use(helmet());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
