@@ -67,7 +67,7 @@ exports.ticket_create_post = [
             naam_besteller: req.body.naam,
             aantal_kaarten_voor_besteller: req.body.aantal,
             email_besteller: req.body.email,
-            gsm_besteller: req.body.gsm,
+            gsm_nummer_besteller: req.body.gsm,
             toneelstuk: req.params.id
           });
 
