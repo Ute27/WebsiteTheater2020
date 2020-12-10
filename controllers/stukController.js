@@ -79,7 +79,7 @@ exports.ticket_create_post = [
             .exec(function (err, info_stuk) {
               if (err) { return next(err); }
               //Successful, so render
-              res.render('stuk', {info: info_stuk , err: "Er is iets misgelopen, probeer opnieuw.", correct: false, input: ticket});
+              res.render('stuk', {info: info_stuk , err: "Er is iets misgelopen, probeer opnieuw", correct: false, input: ticket, errors: errors.array()});
             });
           }
           else {
