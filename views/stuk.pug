@@ -37,22 +37,27 @@ block content
             div(class="w3-container")
               form(method='POST' id='ut-ticketform')
                 div(class="g-recaptcha ut-captcha" data-sitekey="6LemhPoZAAAAAOzDVSBSthLpT0AIC66sMk858FcT")
+                div
+                  if errors 
+                    ul
+                      for error in errors
+                        li!= error.msg
                 p
                   |
                   label
                     |
                     i(class="fa fa-shopping-cart") Tickets, €#{info.prijs_tickets} per persoon
-                input(class="w3-input w3-border" type="text" placeholder="How many?" name='aantal' value=(undefined===input ? '' : input.aantal))
-                input(class="w3-input w3-border" type="date" name='datum' value=(undefined===input ? '' : input.datum))
+                input(class="w3-input w3-border" type="text" placeholder="How many?" name='aantal' value=(undefined===input ? '' : input.aantal_kaarten_voor_besteller))
+                input(class="w3-input w3-border" type="date" name='datum' value=(undefined===input ? '' : input.datum_van_stuk))
                 p
                   |
                   label
                     |
                     i(class="fa fa-user") Send To
-                input(class="w3-input w3-border" type="text" placeholder="Naam" name='naam' value=(undefined===input ? '' : input.naam))
-                input(class="w3-input w3-border" type="email" placeholder="Enter email" name='email' value=(undefined===input ? '' : input.email))
-                input(class="w3-input w3-border" type="text" placeholder="Enter gsm" name='gsm' value=(undefined===input ? '' : input.gsm))
-                
+                input(class="w3-input w3-border" type="text" placeholder="Naam" name='naam' value=(undefined===input ? '' : input.naam_besteller))
+                input(class="w3-input w3-border" type="email" placeholder="Enter email" name='email' value=(undefined===input ? '' : input.email_besteller))
+                input(class="w3-input w3-border" type="text" placeholder="Enter gsm" name='gsm' value=(undefined===input ? '' : input.gsm_nummer_besteller))
+
                 button(class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right") PAY 
                   |
                   i(class="fa fa-check")
